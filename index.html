@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="author" content="Wilmar López">
+    <meta name="description" content="Portafolio de Wilmar López, técnico en hardware y redes, mecánico, conductor de maquinaria pesada, con experiencia en bases de datos y Python, y practicante QC en Globant.">
+    <title data-i18n="title">Wilmar López · Quality Control</title>
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-dark: #0a1929;
+            --tech-purple: #8B5CF6;
+            --soft-blue: #60a5fa;
+            --soft-green: #34d399;
+            --soft-orange: #fbbf24;
+            --soft-red: #f87171;
+            --github-green: #2ea44f;
+            --royal-blue: #1e3a8a; /* Ya no se usa para el badge, se mantiene por si acaso */
+        }
+
+        /* BASE: Modo oscuro (por defecto) */
+        body {
+            background: url('Fondo.png') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            scroll-behavior: smooth;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            transition: background-image 0.3s ease;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+            transition: background-color 0.3s;
+        }
+        h1, h2, h3, h4, h5, p, .text-muted, .lead, .display-4, .display-6 {
+            color: #fff !important;
+        }
+        .text-muted {
+            opacity: 0.9;
+        }
+        .navbar-custom {
+            background: rgba(10, 25, 41, 0.8) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .navbar-brand p {
+            color: white !important;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        .navbar-brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .nav-link.btn {
+            color: white;
+            border-color: rgba(255,255,255,0.3);
+            border-radius: 40px;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s;
+        }
+        .nav-link.btn:hover {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(37,99,235,0.4);
+        }
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+        .profile-carousel {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
+        }
+        .profile-carousel .carousel-inner {
+            border-radius: 0;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+        }
+        .profile-carousel .carousel-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        @media (min-width: 768px) {
+            .profile-carousel {
+                width: 320px;
+                height: 320px;
+            }
+            .profile-carousel .carousel-item img {
+                height: 320px;
+            }
+        }
+        .badge-globant {
+            background: var(--tech-purple);
+            color: white;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+        .badge-royal {
+            background: var(--tech-purple);  /* Cambiado a morado claro */
+            color: white;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+        .btn-tecnologico {
+            background: var(--tech-purple);
+            border-color: var(--tech-purple);
+            color: white;
+        }
+        .btn-tecnologico:hover {
+            background: #7C3AED;
+            border-color: #7C3AED;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(139,92,246,0.4);
+        }
+        .btn-outline-tecnologico {
+            border: 2px solid var(--tech-purple);
+            color: white;
+            background: transparent;
+        }
+        .btn-outline-tecnologico:hover {
+            background: var(--tech-purple);
+            color: white;
+        }
+        .testimonio-card {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            width: 100%;
+            max-width: 18rem;
+            backdrop-filter: blur(4px);
+            cursor: default;
+            margin: 0 auto;
+        }
+        .testimonio-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px -12px var(--tech-purple);
+            background: white;
+        }
+        .testimonio-card h5, .testimonio-card p {
+            color: #1f2937 !important;
+        }
+        .carousel:hover .carousel-item {
+            animation-play-state: paused;
+        }
+        .proyecto-card {
+            border: none;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(4px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .proyecto-card:hover {
+            box-shadow: 0 20px 40px -12px var(--tech-purple);
+            transform: translateY(-5px);
+            background: white;
+        }
+        .proyecto-card h5, .proyecto-card p {
+            color: #1f2937 !important;
+        }
+        .github-placeholder {
+            background: linear-gradient(135deg, #333, #6e5494);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            height: 180px;
+        }
+        @media (min-width: 768px) {
+            .github-placeholder {
+                height: 200px;
+            }
+        }
+        .btn-repositorio {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: transparent;
+            border: 2px solid var(--tech-purple);
+            color: var(--tech-purple);
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+        .btn-repositorio:hover {
+            background: var(--tech-purple);
+            color: white;
+            transform: scale(1.02);
+        }
+        .btn-repositorio i {
+            font-size: 1rem;
+        }
+        .skill-badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            margin: 0.3rem;
+            border-radius: 40px;
+            background: transparent !important;
+            color: white !important;
+            border: 2px solid;
+            transition: all 0.2s;
+            display: inline-block;
+            font-weight: 500;
+        }
+        @media (min-width: 768px) {
+            .skill-badge {
+                font-size: 1rem;
+                padding: 0.6rem 1.4rem;
+            }
+        }
+        .skill-badge:hover {
+            background: rgba(255,255,255,0.1);
+            transform: scale(1.05);
+        }
+        .skill-badge.java { border-color: #007396; }
+        .skill-badge.python { border-color: #3776AB; }
+        .skill-badge.javascript { border-color: #F7DF1E; }
+        .skill-badge.css { border-color: #264de4; }
+        .skill-badge.html { border-color: #e34c26; }
+        .skill-badge.bootstrap { border-color: #7952b3; }
+        .skill-badge.git { border-color: #F05032; }
+        .skill-badge.github { border-color: #333; }
+        .skill-badge.sql { border-color: #003B57; }
+        .skill-badge.testing { border-color: #28a745; }
+        .skill-badge.qc { border-color: #6f42c1; }
+        .skill-badge.redes { border-color: #17a2b8; }
+        .skill-badge.hardware { border-color: #fd7e14; }
+        .skill-badge.mecanica { border-color: #8B4513; }
+        .skill-badge.maquinaria { border-color: #2c3e50; }
+        .skill-badge.telecom { border-color: #00a86b; }
+        .skill-badge.construccion { border-color: #8B5A2B; }
+        .skill-badge.scrum { border-color: var(--soft-orange); }
+        .skill-badge.comunicacion { border-color: var(--soft-blue); }
+        .skill-badge.trabajo-equipo { border-color: var(--soft-green); }
+        .skill-badge.liderazgo { border-color: #c084fc; }
+        .skill-badge.adaptabilidad { border-color: #f472b6; }
+        .skill-badge.problemas { border-color: #fb923c; }
+
+        /* Footer con borde morado alrededor del contenido */
+        .contact-wrapper {
+            background: rgba(10, 25, 41, 0.95);
+            backdrop-filter: blur(4px);
+            border: 2px solid var(--tech-purple);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            margin: 0 1rem;
+        }
+        body.light-mode .contact-wrapper {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: var(--tech-purple);
+        }
+        footer {
+            background: transparent !important;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            border: none;
+        }
+        footer h5 {
+            color: #93c5fd;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+        footer ul {
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #93c5fd;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: white;
+        }
+        footer .form-control {
+            background: rgba(255,255,255,0.9) !important;
+            border: none;
+        }
+        footer .btn-warning {
+            background: var(--tech-purple);
+            border-color: var(--tech-purple);
+            color: white;
+        }
+        footer .btn-warning:hover {
+            background: #7C3AED;
+            border-color: #7C3AED;
+        }
+        body.light-mode footer .contact-wrapper {
+            background: rgba(255, 255, 255, 0.95);
+        }
+        body.light-mode footer h5 {
+            color: var(--tech-purple);
+        }
+        body.light-mode footer a {
+            color: var(--tech-purple);
+        }
+        body.light-mode footer a:hover {
+            color: #0a1929;
+        }
+        body.light-mode footer .form-control {
+            background: white !important;
+            border: 1px solid #ddd;
+        }
+        body.light-mode footer .btn-warning {
+            background: var(--tech-purple);
+            color: white;
+        }
+        /* Botón flotante hamburguesa (fuera del navbar) */
+        .hamburger-floating {
+            position: fixed;
+            top: 120px;      /* bajado 50px desde 20px */
+            left: 20px;
+            z-index: 1100;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            color: white;
+            font-size: 1.4rem;
+        }
+        .hamburger-floating:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.4);
+        }
+        body.light-mode .hamburger-floating {
+            background: rgba(0,0,0,0.2);
+            color: #1f2937;
+        }
+        body.light-mode .hamburger-floating:hover {
+            background: rgba(0,0,0,0.3);
+        }
+        /* Ocultar en pantallas grandes */
+        @media (min-width: 992px) {
+            .hamburger-floating {
+                display: none;
+            }
+        }
+        @media (max-width: 576px) {
+            .hamburger-floating {
+                top: 100px;   /* ajuste fino para móvil */
+                left: 12px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        .carousel-item {
+            transition: transform 0.8s ease-in-out;
+        }
+        .hobby-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+            height: 100%;
+            border: 1px solid rgba(139,92,246,0.2);
+            backdrop-filter: blur(4px);
+        }
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(139,92,246,0.3);
+            border-color: var(--tech-purple);
+            background: white;
+        }
+        .hobby-card i {
+            font-size: 2.5rem;
+            color: var(--tech-purple);
+            margin-bottom: 0.8rem;
+        }
+        .hobby-card h5 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1f2937 !important;
+            font-size: 1.1rem;
+        }
+        .hobby-card p, .hobby-card ul {
+            color: #4b5563 !important;
+            font-size: 0.9rem;
+        }
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: var(--tech-purple);
+            margin: 2rem auto 2.5rem;
+            border-radius: 2px;
+            opacity: 0.4;
+        }
+
+        /* Modo claro */
+        body.light-mode {
+            background: url('Modo-Claro.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        body.light-mode::before {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        body.light-mode h1, body.light-mode h2, body.light-mode h3,
+        body.light-mode h4, body.light-mode h5, body.light-mode p,
+        body.light-mode .text-muted, body.light-mode .lead,
+        body.light-mode .display-4, body.light-mode .display-6 {
+            color: #1f2937 !important;
+        }
+        body.light-mode .navbar-custom {
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        body.light-mode .navbar-brand p {
+            color: #1f2937 !important;
+        }
+        body.light-mode .nav-link.btn {
+            color: #1f2937;
+            border-color: rgba(0,0,0,0.2);
+        }
+        body.light-mode .nav-link.btn:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        body.light-mode .badge-globant, body.light-mode .badge-royal {
+            background: var(--tech-purple);
+            color: white;
+        }
+        body.light-mode .btn-outline-tecnologico {
+            border-color: var(--tech-purple);
+            color: var(--tech-purple);
+        }
+        body.light-mode .btn-outline-tecnologico:hover {
+            background: var(--tech-purple);
+            color: white;
+        }
+        body.light-mode .skill-badge {
+            color: #1f2937 !important;
+        }
+        body.light-mode .skill-badge:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        body.light-mode .proyecto-card, body.light-mode .testimonio-card, body.light-mode .hobby-card {
+            background: rgba(255,255,255,0.95);
+        }
+        body.light-mode .modal-contenido {
+            background-color: #f8f9fa;
+            color: #1f2937;
+        }
+        body.light-mode .btn-repositorio {
+            border-color: var(--tech-purple);
+            color: var(--tech-purple);
+        }
+        body.light-mode .btn-repositorio:hover {
+            background: var(--tech-purple);
+            color: white;
+        }
+        body.light-mode .section-divider {
+            background: var(--tech-purple);
+        }
+
+        /* Botones flotantes: idioma y tema */
+        .floating-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1100;
+            display: flex;
+            gap: 12px;
+        }
+        .theme-toggle, .lang-dropdown {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            color: white;
+            font-size: 1.4rem;
+        }
+        .theme-toggle:hover, .lang-dropdown:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.4);
+        }
+        body.light-mode .theme-toggle,
+        body.light-mode .lang-dropdown {
+            background: rgba(0,0,0,0.2);
+            color: #1f2937;
+        }
+        body.light-mode .theme-toggle:hover,
+        body.light-mode .lang-dropdown:hover {
+            background: rgba(0,0,0,0.3);
+        }
+        .lang-dropdown {
+            border-radius: 40px;
+            width: auto;
+            padding: 0 1rem;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        .lang-dropdown .dropdown-menu {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--tech-purple);
+        }
+        .lang-dropdown .dropdown-item {
+            color: white;
+        }
+        .lang-dropdown .dropdown-item:hover {
+            background: var(--tech-purple);
+            color: white;
+        }
+        body.light-mode .lang-dropdown .dropdown-menu {
+            background: rgba(255,255,255,0.9);
+            color: #1f2937;
+        }
+        body.light-mode .lang-dropdown .dropdown-item {
+            color: #1f2937;
+        }
+        body.light-mode .lang-dropdown .dropdown-item:hover {
+            background: var(--tech-purple);
+            color: white;
+        }
+        @media (max-width: 576px) {
+            .floating-controls {
+                top: 12px;
+                right: 12px;
+                gap: 8px;
+            }
+            .theme-toggle, .lang-dropdown {
+                height: 40px;
+            }
+            .theme-toggle {
+                width: 40px;
+                font-size: 1.2rem;
+            }
+            .lang-dropdown {
+                font-size: 0.8rem;
+                padding: 0 0.8rem;
+            }
+        }
+
+        /* Botón QR flotante inferior derecho */
+        .qr-floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1100;
+            background: var(--tech-purple);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            color: white;
+            font-size: 1.8rem;
+        }
+        .qr-floating-btn:hover {
+            transform: scale(1.05);
+            background: #7C3AED;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+        body.light-mode .qr-floating-btn {
+            background: var(--tech-purple);
+            color: white;
+        }
+        body.light-mode .qr-floating-btn:hover {
+            background: #7C3AED;
+        }
+        @media (max-width: 576px) {
+            .qr-floating-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Modal QR mejorado */
+        .qr-modal .modal-content {
+            background: rgba(30, 30, 47, 0.95);
+            backdrop-filter: blur(12px);
+            border: 2px solid var(--tech-purple);
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+            color: white;
+            overflow: hidden;
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+        .qr-modal.show .modal-content {
+            transform: scale(1);
+        }
+        body.light-mode .qr-modal .modal-content {
+            background: rgba(255, 255, 255, 0.96);
+            color: #1f2937;
+            border-color: var(--tech-purple);
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.2);
+        }
+        .qr-modal .modal-header {
+            border-bottom-color: var(--tech-purple);
+            padding: 1rem 1.5rem;
+        }
+        .qr-modal .btn-close {
+            filter: invert(1);
+        }
+        body.light-mode .qr-modal .btn-close {
+            filter: invert(0);
+        }
+        .qr-modal .modal-body {
+            text-align: center;
+            padding: 2rem 2rem 1.5rem;
+        }
+        .qr-modal .modal-footer {
+            border-top-color: var(--tech-purple);
+            justify-content: center;
+            padding: 1rem 1.5rem 1.5rem;
+        }
+        .qr-modal img {
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        .qr-modal img:hover {
+            transform: scale(1.02);
+        }
+        @media (min-width: 768px) {
+            .qr-modal .modal-body {
+                padding: 2rem 2rem 1.5rem;
+            }
+            .qr-modal img {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón flotante del menú hamburguesa (fuera del navbar) -->
+    <button class="hamburger-floating" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" id="hamburguesa">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Controles flotantes: idioma y tema -->
+    <section class="floating-controls">
+        <section class="dropdown lang-dropdown">
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="langButton">
+                🌐 Español
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" data-lang="es">🇪🇸 Español</a></li>
+                <li><a class="dropdown-item" href="#" data-lang="en">🇬🇧 English</a></li>
+                <li><a class="dropdown-item" href="#" data-lang="pt">🇵🇹 Português</a></li>
+            </ul>
+        </section>
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+            <i class="bi bi-moon-stars"></i>
+        </button>
+    </section>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom py-3">
+        <section class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#inicio">
+                <img src="/Portafolio/Mi Foto - Globant .jpeg" alt="Wilmar" class="me-2">
+                <p class="fw-bold mb-0">Wilmar López</p>
+            </a>
+            <!-- El botón hamburguesa original se ha eliminado; usamos el flotante -->
+            <section class="collapse navbar-collapse" id="menuPrincipal">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#inicio" data-i18n="nav_inicio">Inicio</a></li>
+                    <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#habilidades-tecnicas" data-i18n="nav_tecnologias">Tecnologías</a></li>
+                    <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#habilidades-extras" data-i18n="nav_extras">Extras</a></li>
+                    <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#sobre-mi" data-i18n="nav_sobre_mi">Sobre mí</a></li>
+                    <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#proyectos" data-i18n="nav_proyectos">Proyectos</a></li>
+                    <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#testimonios" data-i18n="nav_testimonios">Testimonios</a></li>
+                    <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#contacto" data-i18n="nav_contacto">Contacto</a></li>
+                </ul>
+            </section>
+        </section>
+    </nav>
+
+    <main class="container" style="margin-top: 100px;">
+
+        <!-- ========== PERFIL ========== -->
+        <section id="inicio" class="row min-vh-75 align-items-center py-5" data-aos="fade-up">
+            <figure class="col-12 col-md-4 text-center" data-aos="fade-right">
+                <section id="fotoPerfil" class="carousel slide profile-carousel" data-bs-ride="carousel" data-bs-interval="2000">
+                    <section class="carousel-inner">
+                        <article class="carousel-item active"><img src="/Portafolio/Mi Foto - Globant .jpeg" class="d-block w-100" alt="Wilmar López"></article>
+                        <article class="carousel-item"><img src="/Portafolio/Yo.png" class="d-block w-100" alt="Wilmar López 2"></article>
+                    </section>
+                </section>
+            </figure>
+            <article class="col-12 col-md-8" data-aos="fade-left">
+                <h1 class="display-4 fw-bold">Wilmar López</h1>
+                <section class="mt-4 d-flex flex-wrap align-items-center gap-3">
+                    <span class="badge-globant" data-i18n="badge_globant">Quality Control (QC) Globant</span>
+                    <span class="badge-royal" data-i18n="badge_royal">Practicante Royal Caribbean</span>
+                </section>
+                <p class="lead py-2" data-i18n="perfil_texto">
+                    Técnico Auxiliar en Sistemas con experiencia en Quality Control, apasionado por asegurar la calidad y el funcionamiento óptimo de los sistemas. Destaca por su atención al detalle y habilidades en testing, identificando problemas antes de que impacten al usuario. Su compromiso, disciplina y enfoque en la mejora continua garantizan resultados precisos y contribuyen al éxito de los proyectos y del equipo.
+                </p>
+                <section class="mt-4 d-flex flex-wrap align-items-center gap-3">
+                    <a href="https://drive.google.com/file/d/1-THZX_GI2PO___rDPfChGYJUU5-sR3LH/view?usp=sharing" class="btn btn-outline-tecnologico rounded-pill px-4 py-2" target="_blank" data-i18n="btn_cv">📄 Ver CV</a>
+                    <a href="#contacto" class="btn btn-outline-tecnologico rounded-pill px-4 py-2" data-i18n="btn_contacto"><i class="bi bi-telephone-fill me-2"></i>Contáctame</a>
+                </section>
+            </article>
+        </section>
+
+        <!-- ========== HABILIDADES TECNOLÓGICAS ========== -->
+        <section id="habilidades-tecnicas" class="py-5" data-aos="fade-up">
+            <header class="text-center mb-5">
+                <h2 class="fw-bold display-6" data-i18n="skills_tech_title">Habilidades tecnológicas</h2>
+                <p class="text-muted" data-i18n="skills_tech_sub">Lenguajes, herramientas y testing</p>
+            </header>
+            <section class="d-flex flex-wrap justify-content-center">
+                <p class="skill-badge java">Java</p><p class="skill-badge python">Python</p><p class="skill-badge javascript">JavaScript</p>
+                <p class="skill-badge css">CSS3</p><p class="skill-badge html">HTML5</p><p class="skill-badge bootstrap">Bootstrap</p>
+                <p class="skill-badge git">Git</p><p class="skill-badge github">GitHub</p><p class="skill-badge sql">SQL</p>
+                <p class="skill-badge testing">Testing manual</p><p class="skill-badge qc">Quality Control</p>
+            </section>
+        </section>
+
+        <!-- ========== HABILIDADES COMPLEMENTARIAS ========== -->
+        <section id="habilidades-complementarias" class="py-5" data-aos="fade-up">
+            <header class="text-center mb-5">
+                <h2 class="fw-bold display-6" data-i18n="skills_soft_title">Habilidades complementarias</h2>
+                <p class="text-muted" data-i18n="skills_soft_sub">Metodologías ágiles y habilidades blandas</p>
+            </header>
+            <section class="d-flex flex-wrap justify-content-center">
+                <p class="skill-badge scrum">Scrum</p><p class="skill-badge comunicacion">Comunicación</p><p class="skill-badge trabajo-equipo">Trabajo en equipo</p>
+                <p class="skill-badge liderazgo">Liderazgo</p><p class="skill-badge adaptabilidad">Adaptabilidad</p><p class="skill-badge problemas">Resolución de problemas</p>
+            </section>
+        </section>
+
+        <!-- ========== HABILIDADES EXTRAS ========== -->
+        <section id="habilidades-extras" class="py-5" data-aos="fade-up">
+            <header class="text-center mb-5">
+                <h2 class="fw-bold display-6" data-i18n="skills_extra_title">Otras habilidades</h2>
+                <p class="text-muted" data-i18n="skills_extra_sub">Experiencia técnica adicional</p>
+            </header>
+            <section class="d-flex flex-wrap justify-content-center">
+                <p class="skill-badge hardware">Hardware</p><p class="skill-badge redes">Redes</p><p class="skill-badge telecom">Telecomunicaciones</p>
+                <p class="skill-badge mecanica">Mecánica general</p><p class="skill-badge maquinaria">Maquinaria pesada</p><p class="skill-badge construccion">Construcción</p>
+            </section>
+        </section>
+
+        <section class="section-divider"></section>
+
+        <!-- ========== SOBRE MÍ ========== -->
+        <section id="sobre-mi" class="py-5" data-aos="fade-up">
+            <header class="text-center mb-5">
+                <h2 class="fw-bold display-6" data-i18n="about_title">Sobre mí</h2>
+                <p class="text-muted" data-i18n="about_sub">Mi trayectoria profesional y pasiones</p>
+            </header>
+            <section class="row g-4 mb-5">
+                <article class="col-md-6">
+                    <article class="hobby-card d-flex flex-column align-items-start text-start p-4">
+                        <i class="bi bi-pc-display fs-1 mb-3"></i>
+                        <h5 data-i18n="about_card1_title">Técnico en sistemas · Hardware y redes</h5>
+                        <p data-i18n="about_card1_text">Formación técnica en mantenimiento de equipos, configuración de redes, cableado estructurado y resolución de fallas.</p>
+                    </article>
+                </article>
+                <article class="col-md-6">
+                    <article class="hobby-card d-flex flex-column align-items-start text-start p-4">
+                        <i class="bi bi-file-earmark-code fs-1 mb-3"></i>
+                        <h5 data-i18n="about_card2_title">Experiencia en bases de datos y Python</h5>
+                        <p data-i18n="about_card2_text">Manejo de SQL, modelado de datos, y desarrollo de scripts en Python para automatización y análisis.</p>
+                    </article>
+                </article>
+            </section>
+            <section class="row g-4 mb-5">
+                <article class="col-md-6">
+                    <article class="hobby-card d-flex flex-column align-items-start text-start p-4">
+                        <i class="bi bi-tools fs-1 mb-3"></i>
+                        <h5 data-i18n="about_card3_title">Mecánico general y de maquinaria pesada</h5>
+                        <p data-i18n="about_card3_text">Experiencia en mantenimiento y reparación de vehículos y maquinaria industrial.</p>
+                    </article>
+                </article>
+                <article class="col-md-6">
+                    <article class="hobby-card d-flex flex-column align-items-start text-start p-4">
+                        <i class="bi bi-truck fs-1 mb-3"></i>
+                        <h5 data-i18n="about_card4_title">Conductor de maquinaria pesada</h5>
+                        <p data-i18n="about_card4_text">Operador de motoniveladora, retroexcavadora, horuga (buldócer) y vibrocompactador.</p>
+                    </article>
+                </article>
+            </section>
+            <section class="row g-4 mb-5">
+                <article class="col-md-6">
+                    <article class="hobby-card d-flex flex-column align-items-start text-start p-4">
+                        <i class="bi bi-wifi fs-1 mb-3"></i>
+                        <h5 data-i18n="about_card5_title">Pasantía en telecomunicaciones</h5>
+                        <ul data-i18n="about_card5_list">
+                            <li>Instalación y mantenimiento de redes.</li>
+                            <li>Configuración de equipos WiFi.</li>
+                            <li>Soporte en campo.</li>
+                        </ul>
+                    </article>
+                </article>
+                <article class="col-md-6">
+                    <article class="hobby-card d-flex flex-column align-items-start text-start p-4">
+                        <i class="bi bi-building fs-1 mb-3"></i>
+                        <h5 data-i18n="about_card6_title">Construcción</h5>
+                        <p data-i18n="about_card6_text">Participación en proyectos de obra civil, lectura de planos y trabajo en equipo.</p>
+                    </article>
+                </article>
+            </section>
+            <section class="row g-4">
+                <article class="col-md-4"><article class="hobby-card"><i class="bi bi-trophy"></i><h5 data-i18n="hobby_sports">Deportes</h5><p data-i18n="hobby_sports_text">Fútbol y voleibol, pasión por el trabajo en equipo.</p></article></article>
+                <article class="col-md-4"><article class="hobby-card"><i class="bi bi-music-note-beamed"></i><h5 data-i18n="hobby_music">Música</h5><p data-i18n="hobby_music_text">Canto y toco guitarra. La música es mi expresión creativa.</p></article></article>
+                <article class="col-md-4"><article class="hobby-card"><i class="bi bi-camera"></i><h5 data-i18n="hobby_tech">Tecnología</h5><p data-i18n="hobby_tech_text">Apasionado por cámaras, gadgets y nuevas tendencias.</p></article></article>
+            </section>
+        </section>
+
+        <section class="section-divider"></section>
+
+        <!-- ========== PROYECTOS ========== -->
+        <section id="proyectos" class="py-5" data-aos="fade-up">
+            <header class="text-center mb-5">
+                <h2 class="fw-bold display-6" data-i18n="projects_title">Proyectos destacados</h2>
+                <p class="text-muted" data-i18n="projects_sub">Mis trabajos en GitHub</p>
+            </header>
+            <section class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <article class="col">
+                    <article class="proyecto-card h-100">
+                        <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                        <section class="card-body p-4 d-flex flex-column">
+                            <h5 class="fw-bold" data-i18n="proj1_title">Café de Gatos</h5>
+                            <p class="text-secondary flex-grow-1" data-i18n="proj1_desc">Página web para una cafetería temática de gatos.</p>
+                            <a href="https://github.com/Wilmar-Lopez/Cat-Coffe" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                        </section>
+                    </article>
+                </article>
+                <article class="col">
+                    <article class="proyecto-card h-100">
+                        <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                        <section class="card-body p-4 d-flex flex-column">
+                            <h5 class="fw-bold" data-i18n="proj2_title">Empresa Seguridad</h5>
+                            <p class="text-secondary flex-grow-1" data-i18n="proj2_desc">Entidades de base de datos para sistema de seguridad en Java.</p>
+                            <a href="https://github.com/Wilmar-Lopez/Entidades_WilmarL-pez" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                        </section>
+                    </article>
+                </article>
+                <article class="col">
+                    <article class="proyecto-card h-100">
+                        <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                        <section class="card-body p-4 d-flex flex-column">
+                            <h5 class="fw-bold" data-i18n="proj3_title">Screen Mystery</h5>
+                            <p class="text-secondary flex-grow-1" data-i18n="proj3_desc">Aplicación de misterio y suspenso.</p>
+                            <a href="https://github.com/Wilmar-Lopez/Screen-Mystery" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                        </section>
+                    </article>
+                </article>
+            </section>
+            <footer class="text-center mt-5">
+                <button type="button" class="btn btn-outline-success btn-lg rounded-pill px-5 py-3" onclick="abrirModalProyectos()" data-i18n="btn_more_projects">
+                    Ver más proyectos
+                </button>
+            </footer>
+        </section>
+
+        <!-- ========== TESTIMONIOS ========== -->
+        <section id="testimonios" class="py-5" data-aos="fade-up">
+            <header class="text-center mb-5">
+                <h2 class="fw-bold display-6" data-i18n="testimonials_title">Testimonios</h2>
+                <p class="text-muted" data-i18n="testimonials_sub">Personas que han confiado en mí</p>
+            </header>
+            <section id="carruselTestimonios" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                <section class="carousel-inner">
+                    <article class="carousel-item active">
+                        <section class="d-flex justify-content-center">
+                            <article class="testimonio-card">
+                                <img src="https://ca.slack-edge.com/E02KLGDBF9B-U08PVRJ7Y85-46d1b2c225a7-512" class="w-100" style="height:200px; object-fit:cover;" alt="Nicol Gonzalez">
+                                <section class="p-4">
+                                    <h5 class="fw-bold">Nicol Gonzalez</h5>
+                                    <p class="text-secondary" data-i18n="testimonial1_text">"He tenido la oportunidad de trabajar con Wilmar y puedo afirmar que es un profesional muy responsable y proactivo. Siempre cumple con los plazos, busca soluciones creativas a los problemas y mantiene una actitud positiva frente a los retos."</p>
+                                </section>
+                            </article>
+                        </section>
+                    </article>
+                    <article class="carousel-item">
+                        <section class="d-flex justify-content-center">
+                            <article class="testimonio-card">
+                                <img src="https://ca.slack-edge.com/E02KLGDBF9B-U08R4PFURA7-1055cc54d7de-512" class="w-100" style="height:200px; object-fit:cover;" alt="Yudnaris Prado">
+                                <section class="p-4">
+                                    <h5 class="fw-bold">Yudnaris Prado</h5>
+                                    <p class="text-secondary" data-i18n="testimonial2_text">"Wilmar tiene una gran habilidad para organizar y coordinar tareas. Además, es muy adaptable a cambios y sabe cómo motivar al equipo, lo que hace que todos los involucrados logremos los objetivos de manera efectiva."</p>
+                                </section>
+                            </article>
+                        </section>
+                    </article>
+                    <article class="carousel-item">
+                        <section class="d-flex justify-content-center">
+                            <article class="testimonio-card">
+                                <img src="https://ca.slack-edge.com/E02KLGDBF9B-U08Q1NGJTHA-a670105e3c60-512" class="w-100" style="height:200px; object-fit:cover;" alt="Erika Arevalo">
+                                <section class="p-4">
+                                    <h5 class="fw-bold">Erika Arevalo</h5>
+                                    <p class="text-secondary" data-i18n="testimonial3_text">"Wilmar es una persona excepcional para trabajar en equipo. Siempre aporta ideas innovadoras y demuestra un gran compromiso con los proyectos. Su capacidad de comunicación y liderazgo hace que cualquier equipo funcione de manera eficiente y armoniosa."</p>
+                                </section>
+                            </article>
+                        </section>
+                    </article>
+                    <article class="carousel-item">
+                        <section class="d-flex justify-content-center">
+                            <article class="testimonio-card">
+                                <img src="https://ca.slack-edge.com/E02KLGDBF9B-U01HPTXDZGA-b946afd5fc85-512" class="w-100" style="height:200px; object-fit:cover;" alt="Maria Veronica Gurucharri">
+                                <section class="p-4">
+                                    <h5 class="fw-bold">Maria Veronica Gurucharri</h5>
+                                    <p class="text-secondary" data-i18n="testimonial4_text">"Wilmar destaca por su curiosidad y su disposición para aprender y mejorar constantemente. Es dedicado, responsable y siempre busca la manera de superarse, lo que lo convierte en un gran ejemplo para quienes trabajamos con él."</p>
+                                </section>
+                            </article>
+                        </section>
+                    </article>
+                    <article class="carousel-item">
+                        <section class="d-flex justify-content-center">
+                            <article class="testimonio-card">
+                                <img src="https://ca.slack-edge.com/E02KLGDBF9B-U08PVL597SR-22654ca30d68-192" class="w-100" style="height:200px; object-fit:cover;" alt="Jerson Rocha">
+                                <section class="p-4">
+                                    <h5 class="fw-bold">Jerson Rocha</h5>
+                                    <p class="text-secondary" data-i18n="testimonial5_text">"Trabajar con Wilmar ha sido una experiencia muy satisfactoria. Siempre es atento, escucha nuestras necesidades y ofrece soluciones claras y eficientes. Su profesionalismo genera confianza desde el primer momento."</p>
+                                </section>
+                            </article>
+                        </section>
+                    </article>
+                </section>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carruselTestimonios" data-bs-slide="prev"><span class="carousel-control-prev-icon bg-primary rounded-circle p-3"></span><span class="visually-hidden">Anterior</span></button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carruselTestimonios" data-bs-slide="next"><span class="carousel-control-next-icon bg-primary rounded-circle p-3"></span><span class="visually-hidden">Siguiente</span></button>
+            </section>
+        </section>
+
+        <!-- ========== FOOTER ========== -->
+        <footer id="contacto">
+            <section class="container">
+                <section class="contact-wrapper">
+                    <header class="text-center mb-4">
+                        <h2 class="fw-bold display-6 text-warning" data-i18n="footer_title">Contacto</h2>
+                        <p class="text-light" data-i18n="footer_sub">Conversemos sobre oportunidades</p>
+                    </header>
+                    <section class="row g-4">
+                        <article class="col-md-6">
+                            <h5 data-i18n="footer_personal">Información personal</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i> <strong data-i18n="email_label">Email:</strong> <a href="mailto:lopezwilmar3036@gmail.com" class="text-warning">lopezwilmar3036@gmail.com</a></li>
+                                <li class="mb-2"><i class="bi bi-whatsapp me-2"></i> <strong data-i18n="whatsapp_label">WhatsApp:</strong> <a href="https://wa.me/573223765805" target="_blank" class="text-warning">+57 3223765805</a></li>
+                                <li class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i> <strong data-i18n="location_label">Ubicación:</strong> <span data-i18n="location">Bogotá, Colombia</span></li>
+                            </ul>
+                        </article>
+                        <article class="col-md-6">
+                            <h5 data-i18n="footer_social">Redes sociales</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="https://github.com/Wilmar-Lopez" target="_blank" class="text-warning"><i class="bi bi-github fs-5 me-2"></i>GitHub</a></li>
+                                <li class="mb-2"><a href="https://www.instagram.com/wilmar_lv?igsh=Z3hpcjNlajd4Y2F1" target="_blank" class="text-warning"><i class="bi bi-instagram fs-5 me-2"></i>Instagram</a></li>
+                                <li class="mb-2"><a href="https://www.facebook.com/chiquitowilmarlv" target="_blank" class="text-warning"><i class="bi bi-facebook fs-5 me-2"></i>Facebook</a></li>
+                            </ul>
+                        </article>
+                    </section>
+                    <section class="row mt-4">
+                        <article class="col-md-8 mx-auto">
+                            <h5 class="text-center text-warning mb-3" data-i18n="testimonial_form_title">Deja tu testimonio</h5>
+                            <form id="testimonioForm">
+                                <section class="mb-3"><label class="form-label text-light fw-semibold" data-i18n="form_name">Nombre</label><input type="text" id="testimonioNombre" class="form-control form-control-lg bg-light border-0" placeholder="Tu nombre" required></section>
+                                <section class="mb-3"><label class="form-label text-light fw-semibold" data-i18n="form_email">Email</label><input type="email" id="testimonioEmail" class="form-control form-control-lg bg-light border-0" placeholder="tucorreo@ejemplo.com" required></section>
+                                <section class="mb-3"><label class="form-label text-light fw-semibold" data-i18n="form_message">Testimonio</label><textarea id="testimonioTexto" class="form-control form-control-lg bg-light border-0" rows="4" placeholder="Escribe tu testimonio sobre Wilmar..." required></textarea></section>
+                                <button type="submit" class="btn btn-warning btn-lg w-100 py-2 fw-semibold" data-i18n="form_submit">Enviar testimonio</button>
+                            </form>
+                            <p class="text-light small text-center mt-2" data-i18n="form_note">Tu testimonio aparecerá en el carrusel (solo visible mientras estés en la página).</p>
+                        </article>
+                    </section>
+                    <hr class="my-4 bg-light opacity-25">
+                    <p class="text-center text-light mb-0 small" data-i18n="copyright">© 2025 Wilmar López · Quality Control</p>
+                </section>
+            </section>
+        </footer>
+    </main>
+
+    <!-- Botón flotante QR -->
+    <button class="qr-floating-btn" id="qrBtn" aria-label="Ver código QR">
+        <i class="bi bi-qr-code"></i>
+    </button>
+
+    <!-- Modal QR -->
+    <section class="modal fade qr-modal" id="qrModal" tabindex="-1" aria-hidden="true">
+        <section class="modal-dialog modal-dialog-centered">
+            <section class="modal-content">
+                <header class="modal-header">
+                    <h5 class="modal-title">Código QR del portafolio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </header>
+                <section class="modal-body">
+                    <img id="qrImage" alt="QR Code" style="max-width: 250px; margin: 0 auto;">
+                    <p class="mt-3">Escanea con tu móvil para visitar este portafolio</p>
+                </section>
+                <footer class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </footer>
+            </section>
+        </section>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Hamburguesa flotante: cambio de icono y cerrar al hacer clic
+        const hamburgerBtn = document.getElementById('hamburguesa');
+        const menuCollapse = document.getElementById('menuPrincipal');
+        if (hamburgerBtn && menuCollapse) {
+            const icon = hamburgerBtn.querySelector('i');
+            menuCollapse.addEventListener('show.bs.collapse', () => {
+                hamburgerBtn.classList.add('active');
+                icon.classList.remove('bi-list');
+                icon.classList.add('bi-x');
+            });
+            menuCollapse.addEventListener('hide.bs.collapse', () => {
+                hamburgerBtn.classList.remove('active');
+                icon.classList.remove('bi-x');
+                icon.classList.add('bi-list');
+            });
+            const navLinks = menuCollapse.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const bsCollapse = bootstrap.Collapse.getInstance(menuCollapse);
+                    if (bsCollapse) bsCollapse.hide();
+                });
+            });
+        }
+
+        // Carrusel de testimonios: pausa al hacer hover
+        const carrusel = document.getElementById('carruselTestimonios');
+        if (carrusel) {
+            const bsCarousel = bootstrap.Carousel.getInstance(carrusel);
+            if (bsCarousel) {
+                carrusel.addEventListener('mouseenter', () => bsCarousel.pause());
+                carrusel.addEventListener('mouseleave', () => bsCarousel.cycle());
+            }
+        }
+
+        // Gravatar
+        function getGravatarUrl(email, size = 200) {
+            return `https://www.gravatar.com/avatar/${CryptoJS.MD5(email.trim().toLowerCase()).toString()}?s=${size}&d=identicon`;
+        }
+
+        // Formulario de testimonios
+        document.getElementById('testimonioForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('testimonioNombre').value.trim();
+            const email = document.getElementById('testimonioEmail').value.trim();
+            const texto = document.getElementById('testimonioTexto').value.trim();
+            if (!nombre || !email || !texto) return alert('Completa todos los campos');
+            const gravatarUrl = getGravatarUrl(email);
+            const carouselInner = document.querySelector('#carruselTestimonios .carousel-inner');
+            const newItem = document.createElement('article');
+            newItem.className = 'carousel-item';
+            newItem.innerHTML = `
+                <section class="d-flex justify-content-center">
+                    <article class="testimonio-card">
+                        <img src="${gravatarUrl}" class="w-100" style="height:200px; object-fit:cover;" alt="${nombre}">
+                        <section class="p-4"><h5 class="fw-bold">${nombre}</h5><p class="text-secondary">"${texto}"</p></section>
+                    </article>
+                </section>`;
+            carouselInner.appendChild(newItem);
+            const carouselInstance = bootstrap.Carousel.getInstance(carrusel);
+            if (carouselInstance) carouselInstance.dispose();
+            new bootstrap.Carousel(carrusel, { interval: 3000, ride: 'carousel' });
+            document.getElementById('testimonioForm').reset();
+            alert('¡Gracias por tu testimonio!');
+        });
+
+        window.onload = () => window.scrollTo(0, 0);
+    </script>
+
+    <!-- Modal proyectos personalizado -->
+    <section id="modalProyectos" class="modal-personalizado">
+        <section class="modal-contenido">
+            <header class="modal-header">
+                <h2 class="modal-title fs-2" data-i18n="modal_title">Mis proyectos</h2>
+            </header>
+            <section class="modal-body">
+                <section class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <!-- Proyecto 1: Café de Gatos -->
+                    <article class="col">
+                        <article class="proyecto-card h-100">
+                            <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                            <section class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold" data-i18n="proj1_title">Café de Gatos</h5>
+                                <p class="text-secondary flex-grow-1" data-i18n="proj1_desc">Página web para una cafetería temática de gatos.</p>
+                                <a href="https://github.com/Wilmar-Lopez/Cat-Coffe" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                            </section>
+                        </article>
+                    </article>
+                    <!-- Proyecto 2: Empresa Seguridad -->
+                    <article class="col">
+                        <article class="proyecto-card h-100">
+                            <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                            <section class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold" data-i18n="proj2_title">Empresa Seguridad</h5>
+                                <p class="text-secondary flex-grow-1" data-i18n="proj2_desc">Entidades de base de datos para sistema de seguridad en Java.</p>
+                                <a href="https://github.com/Wilmar-Lopez/Entidades_WilmarL-pez" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                            </section>
+                        </article>
+                    </article>
+                    <!-- Proyecto 3: Screen Mystery -->
+                    <article class="col">
+                        <article class="proyecto-card h-100">
+                            <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                            <section class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold" data-i18n="proj3_title">Screen Mystery</h5>
+                                <p class="text-secondary flex-grow-1" data-i18n="proj3_desc">Aplicación de misterio y suspenso.</p>
+                                <a href="https://github.com/Wilmar-Lopez/Screen-Mystery" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                            </section>
+                        </article>
+                    </article>
+                    <!-- Proyecto 4: Calculadora Python -->
+                    <article class="col">
+                        <article class="proyecto-card h-100">
+                            <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                            <section class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold" data-i18n="proj4_title">Calculadora Python</h5>
+                                <p class="text-secondary flex-grow-1" data-i18n="proj4_desc">Calculadora interactiva en Python.</p>
+                                <a href="https://github.com/Wilmar-Lopez/Calculadora" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                            </section>
+                        </article>
+                    </article>
+                    <!-- Proyecto 5: Diagrama de Flujo -->
+                    <article class="col">
+                        <article class="proyecto-card h-100">
+                            <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                            <section class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold" data-i18n="proj5_title">Diagrama de Flujo</h5>
+                                <p class="text-secondary flex-grow-1" data-i18n="proj5_desc">Herramienta visual con HTML y Python.</p>
+                                <a href="https://github.com/Wilmar-Lopez/Diagrama-de-Flujo" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                            </section>
+                        </article>
+                    </article>
+                    <!-- Proyecto 6: Bingo Python -->
+                    <article class="col">
+                        <article class="proyecto-card h-100">
+                            <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                            <section class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold" data-i18n="proj6_title">Bingo en Python</h5>
+                                <p class="text-secondary flex-grow-1" data-i18n="proj6_desc">Juego de bingo implementado en Python.</p>
+                                <a href="https://github.com/Wilmar-Lopez/BingoWilmar" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                            </section>
+                        </article>
+                    </article>
+                    <!-- Proyecto 7: Carro personalizado Java -->
+                    <article class="col">
+                        <article class="proyecto-card h-100">
+                            <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                            <section class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold" data-i18n="proj7_title">Carro personalizado</h5>
+                                <p class="text-secondary flex-grow-1" data-i18n="proj7_desc">Simulación de carro en Java.</p>
+                                <a href="https://github.com/Wilmar-Lopez/Carro-personalizado-WL" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                            </section>
+                        </article>
+                    </article>
+                </section>
+            </section>
+            <footer class="modal-footer">
+                <button class="btn-github-cerrar" onclick="cerrarModalProyectos()" data-i18n="modal_close">Cerrar</button>
+            </footer>
+        </section>
+    </section>
+
+    <style>
+        .modal-personalizado {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+        }
+        .modal-contenido {
+            background-color: #1e1e2f;
+            margin: 2% auto;
+            border: 1px solid var(--tech-purple);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1200px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+        .modal-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--tech-purple);
+        }
+        .modal-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+        .modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--tech-purple);
+            text-align: right;
+        }
+        .btn-github-cerrar {
+            background-color: var(--github-green);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-github-cerrar:hover {
+            background-color: #2c974b;
+        }
+        @media (max-width: 768px) {
+            .modal-contenido {
+                width: 95%;
+                margin: 5% auto;
+            }
+            .modal-body {
+                padding: 1rem;
+            }
+        }
+    </style>
+
+    <script>
+        function abrirModalProyectos() {
+            document.getElementById('modalProyectos').style.display = 'block';
+        }
+        function cerrarModalProyectos() {
+            document.getElementById('modalProyectos').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalProyectos');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // ----- TEMA OSCURO/CLARO -----
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            icon.classList.remove('bi-moon-stars');
+            icon.classList.add('bi-brightness-high');
+        } else {
+            document.body.classList.remove('light-mode');
+            icon.classList.remove('bi-brightness-high');
+            icon.classList.add('bi-moon-stars');
+        }
+        themeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains('light-mode')) {
+                document.body.classList.remove('light-mode');
+                icon.classList.remove('bi-brightness-high');
+                icon.classList.add('bi-moon-stars');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.add('light-mode');
+                icon.classList.remove('bi-moon-stars');
+                icon.classList.add('bi-brightness-high');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // ----- IDIOMAS -----
+        const translations = {
+            es: {
+                title: "Wilmar López · Quality Control",
+                nav_inicio: "Inicio",
+                nav_tecnologias: "Tecnologías",
+                nav_extras: "Extras",
+                nav_sobre_mi: "Sobre mí",
+                nav_proyectos: "Proyectos",
+                nav_testimonios: "Testimonios",
+                nav_contacto: "Contacto",
+                badge_globant: "Quality Control (QC) Globant",
+                badge_royal: "Practicante Royal Caribbean",
+                perfil_texto: "Técnico Auxiliar en Sistemas con experiencia en Quality Control, apasionado por asegurar la calidad y el funcionamiento óptimo de los sistemas. Destaca por su atención al detalle y habilidades en testing, identificando problemas antes de que impacten al usuario. Su compromiso, disciplina y enfoque en la mejora continua garantizan resultados precisos y contribuyen al éxito de los proyectos y del equipo.",
+                btn_cv: "📄 Ver CV",
+                btn_contacto: "Contáctame",
+                skills_tech_title: "Habilidades tecnológicas",
+                skills_tech_sub: "Lenguajes, herramientas y testing",
+                skills_soft_title: "Habilidades complementarias",
+                skills_soft_sub: "Metodologías ágiles y habilidades blandas",
+                skills_extra_title: "Otras habilidades",
+                skills_extra_sub: "Experiencia técnica adicional",
+                about_title: "Sobre mí",
+                about_sub: "Mi trayectoria profesional y pasiones",
+                about_card1_title: "Técnico en sistemas · Hardware y redes",
+                about_card1_text: "Formación técnica en mantenimiento de equipos, configuración de redes, cableado estructurado y resolución de fallas.",
+                about_card2_title: "Experiencia en bases de datos y Python",
+                about_card2_text: "Manejo de SQL, modelado de datos, y desarrollo de scripts en Python para automatización y análisis.",
+                about_card3_title: "Mecánico general y de maquinaria pesada",
+                about_card3_text: "Experiencia en mantenimiento y reparación de vehículos y maquinaria industrial.",
+                about_card4_title: "Conductor de maquinaria pesada",
+                about_card4_text: "Operador de motoniveladora, retroexcavadora, horuga (buldócer) y vibrocompactador.",
+                about_card5_title: "Pasantía en telecomunicaciones",
+                about_card5_list: "<li>Instalación y mantenimiento de redes.</li><li>Configuración de equipos WiFi.</li><li>Soporte en campo.</li>",
+                about_card6_title: "Construcción",
+                about_card6_text: "Participación en proyectos de obra civil, lectura de planos y trabajo en equipo.",
+                hobby_sports: "Deportes",
+                hobby_sports_text: "Fútbol y voleibol, pasión por el trabajo en equipo.",
+                hobby_music: "Música",
+                hobby_music_text: "Canto y toco guitarra. La música es mi expresión creativa.",
+                hobby_tech: "Tecnología",
+                hobby_tech_text: "Apasionado por cámaras, gadgets y nuevas tendencias.",
+                projects_title: "Proyectos destacados",
+                projects_sub: "Mis trabajos en GitHub",
+                proj1_title: "Café de Gatos",
+                proj1_desc: "Página web para una cafetería temática de gatos.",
+                proj2_title: "Empresa Seguridad",
+                proj2_desc: "Entidades de base de datos para sistema de seguridad en Java.",
+                proj3_title: "Screen Mystery",
+                proj3_desc: "Aplicación de misterio y suspenso.",
+                proj4_title: "Calculadora Python",
+                proj4_desc: "Calculadora interactiva en Python.",
+                proj5_title: "Diagrama de Flujo",
+                proj5_desc: "Herramienta visual con HTML y Python.",
+                proj6_title: "Bingo en Python",
+                proj6_desc: "Juego de bingo implementado en Python.",
+                proj7_title: "Carro personalizado",
+                proj7_desc: "Simulación de carro en Java.",
+                btn_repo: "Ver repositorio",
+                btn_more_projects: "Ver más proyectos",
+                testimonials_title: "Testimonios",
+                testimonials_sub: "Personas que han confiado en mí",
+                testimonial1_text: '"He tenido la oportunidad de trabajar con Wilmar y puedo afirmar que es un profesional muy responsable y proactivo. Siempre cumple con los plazos, busca soluciones creativas a los problemas y mantiene una actitud positiva frente a los retos."',
+                testimonial2_text: '"Wilmar tiene una gran habilidad para organizar y coordinar tareas. Además, es muy adaptable a cambios y sabe cómo motivar al equipo, lo que hace que todos los involucrados logremos los objetivos de manera efectiva."',
+                testimonial3_text: '"Wilmar es una persona excepcional para trabajar en equipo. Siempre aporta ideas innovadoras y demuestra un gran compromiso con los proyectos. Su capacidad de comunicación y liderazgo hace que cualquier equipo funcione de manera eficiente y armoniosa."',
+                testimonial4_text: '"Wilmar destaca por su curiosidad y su disposición para aprender y mejorar constantemente. Es dedicado, responsable y siempre busca la manera de superarse, lo que lo convierte en un gran ejemplo para quienes trabajamos con él."',
+                testimonial5_text: '"Trabajar con Wilmar ha sido una experiencia muy satisfactoria. Siempre es atento, escucha nuestras necesidades y ofrece soluciones claras y eficientes. Su profesionalismo genera confianza desde el primer momento."',
+                footer_title: "Contacto",
+                footer_sub: "Conversemos sobre oportunidades",
+                footer_personal: "Información personal",
+                email_label: "Email:",
+                whatsapp_label: "WhatsApp:",
+                location_label: "Ubicación:",
+                location: "Bogotá, Colombia",
+                footer_social: "Redes sociales",
+                testimonial_form_title: "Deja tu testimonio",
+                form_name: "Nombre",
+                form_email: "Email",
+                form_message: "Testimonio",
+                form_submit: "Enviar testimonio",
+                form_note: "Tu testimonio aparecerá en el carrusel (solo visible mientras estés en la página).",
+                copyright: "© 2025 Wilmar López · Quality Control",
+                modal_title: "Mis proyectos",
+                modal_close: "Cerrar"
+            },
+            en: {
+                title: "Wilmar López · Quality Control",
+                nav_inicio: "Home",
+                nav_tecnologias: "Technologies",
+                nav_extras: "Extras",
+                nav_sobre_mi: "About Me",
+                nav_proyectos: "Projects",
+                nav_testimonios: "Testimonials",
+                nav_contacto: "Contact",
+                badge_globant: "Quality Control (QC) Globant",
+                badge_royal: "Royal Caribbean Intern",
+                perfil_texto: "Systems Assistant Technician with experience in Quality Control, passionate about ensuring quality and optimal system performance. Stands out for attention to detail and testing skills, identifying problems before they impact the user. His commitment, discipline, and focus on continuous improvement guarantee precise results and contribute to the success of projects and the team.",
+                btn_cv: "📄 View CV",
+                btn_contacto: "Contact Me",
+                skills_tech_title: "Technical Skills",
+                skills_tech_sub: "Languages, tools and testing",
+                skills_soft_title: "Soft Skills",
+                skills_soft_sub: "Agile methodologies and soft skills",
+                skills_extra_title: "Other Skills",
+                skills_extra_sub: "Additional technical experience",
+                about_title: "About Me",
+                about_sub: "My professional background and passions",
+                about_card1_title: "Systems Technician · Hardware & Networks",
+                about_card1_text: "Technical training in equipment maintenance, network configuration, structured cabling, and troubleshooting.",
+                about_card2_title: "Experience in Databases and Python",
+                about_card2_text: "SQL management, data modeling, and Python scripting for automation and analysis.",
+                about_card3_title: "General and Heavy Machinery Mechanic",
+                about_card3_text: "Experience in vehicle and industrial machinery maintenance and repair.",
+                about_card4_title: "Heavy Machinery Operator",
+                about_card4_text: "Operator of motor grader, backhoe, bulldozer, and vibratory compactor.",
+                about_card5_title: "Telecommunications Internship",
+                about_card5_list: "<li>Network installation and maintenance.</li><li>WiFi equipment configuration.</li><li>Field support.</li>",
+                about_card6_title: "Construction",
+                about_card6_text: "Participation in civil works projects, blueprint reading, and teamwork.",
+                hobby_sports: "Sports",
+                hobby_sports_text: "Soccer and volleyball, passion for teamwork.",
+                hobby_music: "Music",
+                hobby_music_text: "I sing and play guitar. Music is my creative expression.",
+                hobby_tech: "Technology",
+                hobby_tech_text: "Passionate about cameras, gadgets, and new trends.",
+                projects_title: "Featured Projects",
+                projects_sub: "My work on GitHub",
+                proj1_title: "Cat Coffee",
+                proj1_desc: "Website for a cat-themed coffee shop.",
+                proj2_title: "Security Company",
+                proj2_desc: "Database entities for a security system in Java.",
+                proj3_title: "Screen Mystery",
+                proj3_desc: "Mystery and suspense application.",
+                proj4_title: "Python Calculator",
+                proj4_desc: "Interactive calculator in Python.",
+                proj5_title: "Flowchart Tool",
+                proj5_desc: "Visual tool with HTML and Python.",
+                proj6_title: "Python Bingo",
+                proj6_desc: "Bingo game implemented in Python.",
+                proj7_title: "Custom Car",
+                proj7_desc: "Car simulation in Java.",
+                btn_repo: "View repository",
+                btn_more_projects: "See more projects",
+                testimonials_title: "Testimonials",
+                testimonials_sub: "People who have trusted me",
+                testimonial1_text: '"I have had the opportunity to work with Wilmar and I can say that he is a very responsible and proactive professional. He always meets deadlines, finds creative solutions to problems, and maintains a positive attitude towards challenges."',
+                testimonial2_text: '"Wilmar has a great ability to organize and coordinate tasks. He is also very adaptable to changes and knows how to motivate the team, making all of us achieve our goals effectively."',
+                testimonial3_text: '"Wilmar is an exceptional person to work in a team. He always brings innovative ideas and demonstrates great commitment to projects. His communication and leadership skills make any team work efficiently and harmoniously."',
+                testimonial4_text: '"Wilmar stands out for his curiosity and his willingness to constantly learn and improve. He is dedicated, responsible, and always seeks ways to surpass himself, making him a great example for those who work with him."',
+                testimonial5_text: '"Working with Wilmar has been a very satisfying experience. He is always attentive, listens to our needs, and offers clear and efficient solutions. His professionalism generates trust from the very first moment."',
+                footer_title: "Contact",
+                footer_sub: "Let's talk about opportunities",
+                footer_personal: "Personal information",
+                email_label: "Email:",
+                whatsapp_label: "WhatsApp:",
+                location_label: "Location:",
+                location: "Bogotá, Colombia",
+                footer_social: "Social media",
+                testimonial_form_title: "Leave your testimonial",
+                form_name: "Name",
+                form_email: "Email",
+                form_message: "Testimonial",
+                form_submit: "Send testimonial",
+                form_note: "Your testimonial will appear in the carousel (only visible while you are on the page).",
+                copyright: "© 2025 Wilmar López · Quality Control",
+                modal_title: "My projects",
+                modal_close: "Close"
+            },
+            pt: {
+                title: "Wilmar López · Quality Control",
+                nav_inicio: "Início",
+                nav_tecnologias: "Tecnologias",
+                nav_extras: "Extras",
+                nav_sobre_mi: "Sobre mim",
+                nav_proyectos: "Projetos",
+                nav_testimonios: "Depoimentos",
+                nav_contacto: "Contato",
+                badge_globant: "Quality Control (QC) Globant",
+                badge_royal: "Estagiário Royal Caribbean",
+                perfil_texto: "Técnico Auxiliar em Sistemas com experiência em Quality Control, apaixonado por garantir a qualidade e o funcionamento ideal dos sistemas. Destaca-se pela atenção aos detalhes e habilidades em testes, identificando problemas antes que impactem o usuário. Seu comprometimento, disciplina e foco na melhoria contínua garantem resultados precisos e contribuem para o sucesso dos projetos e da equipe.",
+                btn_cv: "📄 Ver CV",
+                btn_contacto: "Contate-me",
+                skills_tech_title: "Habilidades técnicas",
+                skills_tech_sub: "Linguagens, ferramentas e testes",
+                skills_soft_title: "Habilidades complementares",
+                skills_soft_sub: "Metodologias ágeis e habilidades interpessoais",
+                skills_extra_title: "Outras habilidades",
+                skills_extra_sub: "Experiência técnica adicional",
+                about_title: "Sobre mim",
+                about_sub: "Minha trajetória profissional e paixões",
+                about_card1_title: "Técnico em sistemas · Hardware e redes",
+                about_card1_text: "Formação técnica em manutenção de equipamentos, configuração de redes, cabeamento estruturado e resolução de falhas.",
+                about_card2_title: "Experiência em bancos de dados e Python",
+                about_card2_text: "Gerenciamento de SQL, modelagem de dados e desenvolvimento de scripts em Python para automação e análise.",
+                about_card3_title: "Mecânico geral e de máquinas pesadas",
+                about_card3_text: "Experiência em manutenção e reparo de veículos e maquinário industrial.",
+                about_card4_title: "Operador de máquinas pesadas",
+                about_card4_text: "Operador de motoniveladora, retroescavadeira, trator de esteira e vibrocompactador.",
+                about_card5_title: "Estágio em telecomunicações",
+                about_card5_list: "<li>Instalação e manutenção de redes.</li><li>Configuração de equipamentos WiFi.</li><li>Suporte em campo.</li>",
+                about_card6_title: "Construção",
+                about_card6_text: "Participação em projetos de obras civis, leitura de plantas e trabalho em equipe.",
+                hobby_sports: "Esportes",
+                hobby_sports_text: "Futebol e vôlei, paixão pelo trabalho em equipe.",
+                hobby_music: "Música",
+                hobby_music_text: "Canto e toco violão. A música é minha expressão criativa.",
+                hobby_tech: "Tecnologia",
+                hobby_tech_text: "Apaixonado por câmeras, gadgets e novas tendências.",
+                projects_title: "Projetos em destaque",
+                projects_sub: "Meus trabalhos no GitHub",
+                proj1_title: "Café de Gatos",
+                proj1_desc: "Site para uma cafeteria temática de gatos.",
+                proj2_title: "Empresa Segurança",
+                proj2_desc: "Entidades de banco de dados para sistema de segurança em Java.",
+                proj3_title: "Screen Mystery",
+                proj3_desc: "Aplicativo de mistério e suspense.",
+                proj4_title: "Calculadora Python",
+                proj4_desc: "Calculadora interativa em Python.",
+                proj5_title: "Diagrama de Fluxo",
+                proj5_desc: "Ferramenta visual com HTML e Python.",
+                proj6_title: "Bingo em Python",
+                proj6_desc: "Jogo de bingo implementado em Python.",
+                proj7_title: "Carro personalizado",
+                proj7_desc: "Simulação de carro em Java.",
+                btn_repo: "Ver repositório",
+                btn_more_projects: "Ver mais projetos",
+                testimonials_title: "Depoimentos",
+                testimonials_sub: "Pessoas que confiaram em mim",
+                testimonial1_text: '"Tive a oportunidade de trabalhar com Wilmar e posso afirmar que ele é um profissional muito responsável e proativo. Sempre cumpre os prazos, busca soluções criativas para os problemas e mantém uma atitude positiva diante dos desafios."',
+                testimonial2_text: '"Wilmar tem uma grande habilidade para organizar e coordenar tarefas. Além disso, é muito adaptável a mudanças e sabe como motivar a equipe, fazendo com que todos alcancemos os objetivos de forma eficaz."',
+                testimonial3_text: '"Wilmar é uma pessoa excepcional para trabalhar em equipe. Sempre traz ideias inovadoras e demonstra grande comprometimento com os projetos. Sua capacidade de comunicação e liderança faz com que qualquer equipe funcione de maneira eficiente e harmoniosa."',
+                testimonial4_text: '"Wilmar se destaca por sua curiosidade e disposição para aprender e melhorar constantemente. É dedicado, responsável e sempre busca maneiras de se superar, sendo um grande exemplo para quem trabalha com ele."',
+                testimonial5_text: '"Trabalhar com Wilmar tem sido uma experiência muito satisfatória. Ele é sempre atencioso, ouve nossas necessidades e oferece soluções claras e eficientes. Seu profissionalismo gera confiança desde o primeiro momento."',
+                footer_title: "Contato",
+                footer_sub: "Vamos conversar sobre oportunidades",
+                footer_personal: "Informações pessoais",
+                email_label: "E-mail:",
+                whatsapp_label: "WhatsApp:",
+                location_label: "Localização:",
+                location: "Bogotá, Colômbia",
+                footer_social: "Redes sociais",
+                testimonial_form_title: "Deixe seu depoimento",
+                form_name: "Nome",
+                form_email: "E-mail",
+                form_message: "Depoimento",
+                form_submit: "Enviar depoimento",
+                form_note: "Seu depoimento aparecerá no carrossel (visível apenas enquanto estiver na página).",
+                copyright: "© 2025 Wilmar López · Quality Control",
+                modal_title: "Meus projetos",
+                modal_close: "Fechar"
+            }
+        };
+
+        function setLanguage(lang) {
+            const t = translations[lang];
+            if (!t) return;
+            document.title = t.title;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        if (el.placeholder) el.placeholder = t[key];
+                        else if (el.value) el.value = t[key];
+                    } else if (el.tagName === 'UL' && key.includes('_list')) {
+                        el.innerHTML = t[key];
+                    } else {
+                        el.innerHTML = t[key];
+                    }
+                }
+            });
+            const langBtn = document.querySelector('#langButton');
+            const langNames = { es: '🌐 Español', en: '🌐 English', pt: '🌐 Português' };
+            langBtn.innerHTML = langNames[lang];
+            localStorage.setItem('language', lang);
+        }
+
+        const langItems = document.querySelectorAll('[data-lang]');
+        langItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = item.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('language') || 'es';
+        setLanguage(savedLang);
+    </script>
+
+    <!-- QR script -->
+    <script>
+        const qrBtn = document.getElementById('qrBtn');
+        const qrModal = new bootstrap.Modal(document.getElementById('qrModal'));
+        const qrImage = document.getElementById('qrImage');
+        qrBtn.addEventListener('click', () => {
+            const currentUrl = window.location.href;
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(currentUrl)}`;
+            qrImage.src = qrUrl;
+            qrModal.show();
+        });
+    </script>
+</body>
+</html>
