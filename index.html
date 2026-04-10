@@ -752,7 +752,7 @@
                     <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#inicio" data-i18n="nav_inicio">Inicio</a></li>
                     <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#habilidades-tecnicas" data-i18n="nav_tecnologias">Tecnologías</a></li>
                     <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#habilidades-extras" data-i18n="nav_extras">Extras</a></li>
-                    <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#sobre-mi" data-i18n="nav_sobre_mi">Sobre mí</a></li>
+                    <!-- Sección "Sobre mí" eliminada -->
                     <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#proyectos" data-i18n="nav_proyectos">Proyectos</a></li>
                     <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#certificados" data-i18n="nav_certificados">Certificados</a></li>
                     <li class="nav-item mx-1"><a class="nav-link btn btn-outline-primary px-4 rounded-pill" href="#testimonios" data-i18n="nav_testimonios">Testimonios</a></li>
@@ -942,7 +942,7 @@
             </footer>
         </section>
 
-        <!-- ========== CERTIFICADOS (NUEVA SECCIÓN) ========== -->
+        <!-- ========== CERTIFICADOS (con los 4 certificados) ========== -->
         <section id="certificados" class="py-5" data-aos="fade-up">
             <header class="text-center mb-5">
                 <h2 class="fw-bold display-6" data-i18n="cert_title">Certificados</h2>
@@ -966,6 +966,26 @@
                         <section class="card-body p-3">
                             <h5 class="fw-bold" data-i18n="cert2_title">Cátedra Ser Emprendedor</h5>
                             <p class="text-secondary small" data-i18n="cert2_desc">Formación en emprendimiento, liderazgo y gestión de proyectos.</p>
+                        </section>
+                    </article>
+                </article>
+                <!-- Certificado 3: Excel desde cero -->
+                <article class="col">
+                    <article class="certificado-card h-100" data-bs-toggle="modal" data-bs-target="#certModal3">
+                        <img src="Excel.jpg" class="certificado-img" alt="Certificado Excel">
+                        <section class="card-body p-3">
+                            <h5 class="fw-bold" data-i18n="cert3_title">Excel desde cero</h5>
+                            <p class="text-secondary small" data-i18n="cert3_desc">Curso de Excel con una duración de 34 horas.</p>
+                        </section>
+                    </article>
+                </article>
+                <!-- Certificado 4: Redacción y Ortografía -->
+                <article class="col">
+                    <article class="certificado-card h-100" data-bs-toggle="modal" data-bs-target="#certModal4">
+                        <img src="RedacionyOrtografia.jpg" class="certificado-img" alt="Certificado Redacción y Ortografía">
+                        <section class="card-body p-3">
+                            <h5 class="fw-bold" data-i18n="cert4_title">Redacción y Ortografía</h5>
+                            <p class="text-secondary small" data-i18n="cert4_desc">Curso de redacción y ortografía con una duración de 30 horas.</p>
                         </section>
                     </article>
                 </article>
@@ -1120,6 +1140,34 @@
                 </header>
                 <section class="modal-body text-center">
                     <img src="CatedraSerEmprendedor.jpg" alt="Certificado Cátedra Ser Emprendedor" class="img-fluid">
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <section class="modal fade cert-modal" id="certModal3" tabindex="-1" aria-hidden="true">
+        <section class="modal-dialog modal-dialog-centered modal-lg">
+            <section class="modal-content">
+                <header class="modal-header">
+                    <h5 class="modal-title" data-i18n="cert3_title">Excel desde cero</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </header>
+                <section class="modal-body text-center">
+                    <img src="Excel.jpg" alt="Certificado Excel" class="img-fluid">
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <section class="modal fade cert-modal" id="certModal4" tabindex="-1" aria-hidden="true">
+        <section class="modal-dialog modal-dialog-centered modal-lg">
+            <section class="modal-content">
+                <header class="modal-header">
+                    <h5 class="modal-title" data-i18n="cert4_title">Redacción y Ortografía</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </header>
+                <section class="modal-body text-center">
+                    <img src="RedacionyOrtografia.jpg" alt="Certificado Redacción y Ortografía" class="img-fluid">
                 </section>
             </section>
         </section>
@@ -1424,7 +1472,6 @@
                 nav_inicio: "Inicio",
                 nav_tecnologias: "Tecnologías",
                 nav_extras: "Extras",
-                nav_sobre_mi: "Sobre mí",
                 nav_proyectos: "Proyectos",
                 nav_certificados: "Certificados",
                 nav_testimonios: "Testimonios",
@@ -1484,6 +1531,10 @@
                 cert1_desc: "Curso de inteligencia emocional y manejo del estrés.",
                 cert2_title: "Cátedra Ser Emprendedor",
                 cert2_desc: "Formación en emprendimiento, liderazgo y gestión de proyectos.",
+                cert3_title: "Excel desde cero",
+                cert3_desc: "Curso de Excel con una duración de 34 horas.",
+                cert4_title: "Redacción y Ortografía",
+                cert4_desc: "Curso de redacción y ortografía con una duración de 30 horas.",
                 testimonials_title: "Testimonios",
                 testimonials_sub: "Personas que han confiado en mí",
                 testimonial1_text: '"He tenido la oportunidad de trabajar con Wilmar y puedo afirmar que es un profesional muy responsable y proactivo. Siempre cumple con los plazos, busca soluciones creativas a los problemas y mantiene una actitud positiva frente a los retos."',
@@ -1514,7 +1565,6 @@
                 nav_inicio: "Home",
                 nav_tecnologias: "Technologies",
                 nav_extras: "Extras",
-                nav_sobre_mi: "About Me",
                 nav_proyectos: "Projects",
                 nav_certificados: "Certificates",
                 nav_testimonios: "Testimonials",
@@ -1574,6 +1624,10 @@
                 cert1_desc: "Emotional intelligence and stress management course.",
                 cert2_title: "Entrepreneurship Chair",
                 cert2_desc: "Training in entrepreneurship, leadership, and project management.",
+                cert3_title: "Excel from scratch",
+                cert3_desc: "Excel course with a duration of 34 hours.",
+                cert4_title: "Writing and Spelling",
+                cert4_desc: "Writing and spelling course with a duration of 30 hours.",
                 testimonials_title: "Testimonials",
                 testimonials_sub: "People who have trusted me",
                 testimonial1_text: '"I have had the opportunity to work with Wilmar and I can say that he is a very responsible and proactive professional. He always meets deadlines, finds creative solutions to problems, and maintains a positive attitude towards challenges."',
@@ -1604,7 +1658,6 @@
                 nav_inicio: "Início",
                 nav_tecnologias: "Tecnologias",
                 nav_extras: "Extras",
-                nav_sobre_mi: "Sobre mim",
                 nav_proyectos: "Projetos",
                 nav_certificados: "Certificados",
                 nav_testimonios: "Depoimentos",
@@ -1664,6 +1717,10 @@
                 cert1_desc: "Curso de inteligência emocional e gerenciamento do estresse.",
                 cert2_title: "Cátedra Ser Empreendedor",
                 cert2_desc: "Formação em empreendedorismo, liderança e gestão de projetos.",
+                cert3_title: "Excel do zero",
+                cert3_desc: "Curso de Excel com duração de 34 horas.",
+                cert4_title: "Redação e Ortografia",
+                cert4_desc: "Curso de redação e ortografia com duração de 30 horas.",
                 testimonials_title: "Depoimentos",
                 testimonials_sub: "Pessoas que confiaram em mim",
                 testimonial1_text: '"Tive a oportunidade de trabalhar com Wilmar e posso afirmar que ele é um profissional muito responsável e proativo. Sempre cumpre os prazos, busca soluções criativas para os problemas e mantém uma atitude positiva diante dos desafios."',
