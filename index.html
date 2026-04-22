@@ -697,6 +697,14 @@
         body.light-mode .certificado-card {
             background: rgba(255,255,255,0.95);
         }
+        /* Texto de certificados: negro y con sombra suave para mejor legibilidad */
+        .certificado-card .fw-bold,
+        .certificado-card .text-secondary,
+        .certificado-card p,
+        .certificado-card small {
+            color: #000000 !important;
+            text-shadow: 0 0 1px rgba(255,255,255,0.5);
+        }
         /* Modal de certificado */
         .cert-modal .modal-content {
             background: rgba(30,30,47,0.95);
@@ -904,6 +912,7 @@
                 <p class="text-muted" data-i18n="projects_sub">Mis trabajos en GitHub</p>
             </header>
             <section class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <!-- Proyecto 1: Café de Gatos -->
                 <article class="col">
                     <article class="proyecto-card h-100">
                         <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
@@ -914,6 +923,7 @@
                         </section>
                     </article>
                 </article>
+                <!-- Proyecto 2: Empresa Seguridad -->
                 <article class="col">
                     <article class="proyecto-card h-100">
                         <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
@@ -924,6 +934,7 @@
                         </section>
                     </article>
                 </article>
+                <!-- Proyecto 3: Screen Mystery -->
                 <article class="col">
                     <article class="proyecto-card h-100">
                         <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
@@ -931,6 +942,39 @@
                             <h5 class="fw-bold" data-i18n="proj3_title">Screen Mystery</h5>
                             <p class="text-secondary flex-grow-1" data-i18n="proj3_desc">Aplicación de misterio y suspenso.</p>
                             <a href="https://github.com/Wilmar-Lopez/Screen-Mystery" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                        </section>
+                    </article>
+                </article>
+                <!-- NUEVO: Proyecto 4: Cajas en Bootstrap -->
+                <article class="col">
+                    <article class="proyecto-card h-100">
+                        <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                        <section class="card-body p-4 d-flex flex-column">
+                            <h5 class="fw-bold" data-i18n="proj4_title">Cajas en Bootstrap</h5>
+                            <p class="text-secondary flex-grow-1" data-i18n="proj4_desc">Diseño de cajas responsivas utilizando el sistema de cuadrícula y utilidades de Bootstrap.</p>
+                            <a href="https://github.com/Wilmar-Lopez/Cajas" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                        </section>
+                    </article>
+                </article>
+                <!-- NUEVO: Proyecto 5: Spa -->
+                <article class="col">
+                    <article class="proyecto-card h-100">
+                        <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                        <section class="card-body p-4 d-flex flex-column">
+                            <h5 class="fw-bold" data-i18n="proj5_title">Spa</h5>
+                            <p class="text-secondary flex-grow-1" data-i18n="proj5_desc">Aplicación de una sola página (SPA) con enrutamiento dinámico.</p>
+                            <a href="https://github.com/Wilmar-Lopez/Spa" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                        </section>
+                    </article>
+                </article>
+                <!-- NUEVO: Proyecto 6: Ejercicios React -->
+                <article class="col">
+                    <article class="proyecto-card h-100">
+                        <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                        <section class="card-body p-4 d-flex flex-column">
+                            <h5 class="fw-bold" data-i18n="proj6_title">Ejercicios React</h5>
+                            <p class="text-secondary flex-grow-1" data-i18n="proj6_desc">Colección de ejercicios prácticos para aprender React.</p>
+                            <a href="https://github.com/Wilmar-Lopez/Ejercicios" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
                         </section>
                     </article>
                 </article>
@@ -942,50 +986,76 @@
             </footer>
         </section>
 
-        <!-- ========== CERTIFICADOS (con los 4 certificados) ========== -->
+        <!-- ========== CERTIFICADOS ========== -->
         <section id="certificados" class="py-5" data-aos="fade-up">
             <header class="text-center mb-5">
                 <h2 class="fw-bold display-6" data-i18n="cert_title">Certificados</h2>
                 <p class="text-muted" data-i18n="cert_sub">Mis certificaciones y cursos</p>
             </header>
             <section class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
-                <!-- Certificado 1: Gestión de Emociones -->
+                <!-- Certificado 1: Gestión de Emociones (Cesde digital) -->
                 <article class="col">
                     <article class="certificado-card h-100" data-bs-toggle="modal" data-bs-target="#certModal1">
                         <img src="GestionDeEmociones.jpg" class="certificado-img" alt="Certificado Gestión de Emociones">
                         <section class="card-body p-3">
                             <h5 class="fw-bold" data-i18n="cert1_title">Gestión de Emociones</h5>
-                            <p class="text-secondary small" data-i18n="cert1_desc">Curso de inteligencia emocional y manejo del estrés.</p>
+                            <p class="text-secondary small mb-1" data-i18n="cert1_desc">Curso de inteligencia emocional y manejo del estrés.</p>
+                            <small class="text-muted" style="color: #000 !important;">Cesde digital</small>
                         </section>
                     </article>
                 </article>
-                <!-- Certificado 2: Cátedra Ser Emprendedor -->
+                <!-- Certificado 2: Cátedra Ser Emprendedor (Cesde digital) -->
                 <article class="col">
                     <article class="certificado-card h-100" data-bs-toggle="modal" data-bs-target="#certModal2">
                         <img src="CatedraSerEmprendedor.jpg" class="certificado-img" alt="Certificado Cátedra Ser Emprendedor">
                         <section class="card-body p-3">
                             <h5 class="fw-bold" data-i18n="cert2_title">Cátedra Ser Emprendedor</h5>
-                            <p class="text-secondary small" data-i18n="cert2_desc">Formación en emprendimiento, liderazgo y gestión de proyectos.</p>
+                            <p class="text-secondary small mb-1" data-i18n="cert2_desc">Formación en emprendimiento, liderazgo y gestión de proyectos.</p>
+                            <small class="text-muted" style="color: #000 !important;">Cesde digital</small>
                         </section>
                     </article>
                 </article>
-                <!-- Certificado 3: Excel desde cero -->
+                <!-- Certificado 3: Excel desde cero (Cesde digital) -->
                 <article class="col">
                     <article class="certificado-card h-100" data-bs-toggle="modal" data-bs-target="#certModal3">
                         <img src="Excel.jpg" class="certificado-img" alt="Certificado Excel">
                         <section class="card-body p-3">
                             <h5 class="fw-bold" data-i18n="cert3_title">Excel desde cero</h5>
-                            <p class="text-secondary small" data-i18n="cert3_desc">Curso de Excel con una duración de 34 horas.</p>
+                            <p class="text-secondary small mb-1" data-i18n="cert3_desc">Curso de Excel con una duración de 34 horas.</p>
+                            <small class="text-muted" style="color: #000 !important;">Cesde digital</small>
                         </section>
                     </article>
                 </article>
-                <!-- Certificado 4: Redacción y Ortografía -->
+                <!-- Certificado 4: Redacción y Ortografía (Cesde digital) -->
                 <article class="col">
                     <article class="certificado-card h-100" data-bs-toggle="modal" data-bs-target="#certModal4">
                         <img src="RedacionyOrtografia.jpg" class="certificado-img" alt="Certificado Redacción y Ortografía">
                         <section class="card-body p-3">
                             <h5 class="fw-bold" data-i18n="cert4_title">Redacción y Ortografía</h5>
-                            <p class="text-secondary small" data-i18n="cert4_desc">Curso de redacción y ortografía con una duración de 30 horas.</p>
+                            <p class="text-secondary small mb-1" data-i18n="cert4_desc">Curso de redacción y ortografía con una duración de 30 horas.</p>
+                            <small class="text-muted" style="color: #000 !important;">Cesde digital</small>
+                        </section>
+                    </article>
+                </article>
+                <!-- Certificado 5: Fundamentos de Python (Platzi) -->
+                <article class="col">
+                    <article class="certificado-card h-100" data-bs-toggle="modal" data-bs-target="#certModal5">
+                        <img src="CursodeFundamentosdePython.jpg" class="certificado-img" alt="Certificado Fundamentos de Python">
+                        <section class="card-body p-3">
+                            <h5 class="fw-bold" data-i18n="cert5_title">Fundamentos de Python</h5>
+                            <p class="text-secondary small mb-1" data-i18n="cert5_desc">Curso de Python con 16 horas de teoría y práctica.</p>
+                            <small class="text-muted" style="color: #000 !important;">Platzi</small>
+                        </section>
+                    </article>
+                </article>
+                <!-- Certificado 6: Programación Básica (Platzi) -->
+                <article class="col">
+                    <article class="certificado-card h-100" data-bs-toggle="modal" data-bs-target="#certModal6">
+                        <img src="cursodeProgramacionBasica.jpg" class="certificado-img" alt="Certificado Programación Básica">
+                        <section class="card-body p-3">
+                            <h5 class="fw-bold" data-i18n="cert6_title">Programación Básica</h5>
+                            <p class="text-secondary small mb-1" data-i18n="cert6_desc">Curso introductorio a la programación.</p>
+                            <small class="text-muted" style="color: #000 !important;">Platzi</small>
                         </section>
                     </article>
                 </article>
@@ -1116,7 +1186,7 @@
         <i class="bi bi-award"></i>
     </button>
 
-    <!-- Modales para certificados -->
+    <!-- Modales para certificados (6 modales) -->
     <section class="modal fade cert-modal" id="certModal1" tabindex="-1" aria-hidden="true">
         <section class="modal-dialog modal-dialog-centered modal-lg">
             <section class="modal-content">
@@ -1168,6 +1238,34 @@
                 </header>
                 <section class="modal-body text-center">
                     <img src="RedacionyOrtografia.jpg" alt="Certificado Redacción y Ortografía" class="img-fluid">
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <section class="modal fade cert-modal" id="certModal5" tabindex="-1" aria-hidden="true">
+        <section class="modal-dialog modal-dialog-centered modal-lg">
+            <section class="modal-content">
+                <header class="modal-header">
+                    <h5 class="modal-title" data-i18n="cert5_title">Fundamentos de Python</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </header>
+                <section class="modal-body text-center">
+                    <img src="CursodeFundamentosdePython.jpg" alt="Certificado Fundamentos de Python" class="img-fluid">
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <section class="modal fade cert-modal" id="certModal6" tabindex="-1" aria-hidden="true">
+        <section class="modal-dialog modal-dialog-centered modal-lg">
+            <section class="modal-content">
+                <header class="modal-header">
+                    <h5 class="modal-title" data-i18n="cert6_title">Programación Básica</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </header>
+                <section class="modal-body text-center">
+                    <img src="cursodeProgramacionBasica.jpg" alt="Certificado Programación Básica" class="img-fluid">
                 </section>
             </section>
         </section>
@@ -1352,6 +1450,39 @@
                             </section>
                         </article>
                     </article>
+                    <!-- NUEVO: Proyecto 8: Cajas en Bootstrap -->
+                    <article class="col">
+                        <article class="proyecto-card h-100">
+                            <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                            <section class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold" data-i18n="proj8_title">Cajas en Bootstrap</h5>
+                                <p class="text-secondary flex-grow-1" data-i18n="proj8_desc">Diseño de cajas responsivas utilizando el sistema de cuadrícula y utilidades de Bootstrap.</p>
+                                <a href="https://github.com/Wilmar-Lopez/Cajas" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                            </section>
+                        </article>
+                    </article>
+                    <!-- NUEVO: Proyecto 9: Spa -->
+                    <article class="col">
+                        <article class="proyecto-card h-100">
+                            <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                            <section class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold" data-i18n="proj9_title">Spa</h5>
+                                <p class="text-secondary flex-grow-1" data-i18n="proj9_desc">Aplicación de una sola página (SPA) con enrutamiento dinámico.</p>
+                                <a href="https://github.com/Wilmar-Lopez/Spa" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                            </section>
+                        </article>
+                    </article>
+                    <!-- NUEVO: Proyecto 10: Ejercicios React -->
+                    <article class="col">
+                        <article class="proyecto-card h-100">
+                            <section class="github-placeholder"><i class="bi bi-github" style="font-size: 5rem; color: white;"></i></section>
+                            <section class="card-body p-4 d-flex flex-column">
+                                <h5 class="fw-bold" data-i18n="proj10_title">Ejercicios React</h5>
+                                <p class="text-secondary flex-grow-1" data-i18n="proj10_desc">Colección de ejercicios prácticos para aprender React.</p>
+                                <a href="https://github.com/Wilmar-Lopez/Ejercicios" target="_blank" class="btn-repositorio"><i class="bi bi-github me-1"></i> <span data-i18n="btn_repo">Ver repositorio</span></a>
+                            </section>
+                        </article>
+                    </article>
                 </section>
             </section>
             <footer class="modal-footer">
@@ -1465,7 +1596,7 @@
             }
         });
 
-        // ----- IDIOMAS -----
+        // ----- IDIOMAS (actualizado con nuevos proyectos) -----
         const translations = {
             es: {
                 title: "Wilmar López · Quality Control",
@@ -1523,6 +1654,12 @@
                 proj6_desc: "Juego de bingo implementado en Python.",
                 proj7_title: "Carro personalizado",
                 proj7_desc: "Simulación de carro en Java.",
+                proj8_title: "Cajas en Bootstrap",
+                proj8_desc: "Diseño de cajas responsivas utilizando el sistema de cuadrícula y utilidades de Bootstrap.",
+                proj9_title: "Spa",
+                proj9_desc: "Aplicación de una sola página (SPA) con enrutamiento dinámico.",
+                proj10_title: "Ejercicios React",
+                proj10_desc: "Colección de ejercicios prácticos para aprender React.",
                 btn_repo: "Ver repositorio",
                 btn_more_projects: "Ver más proyectos",
                 cert_title: "Certificados",
@@ -1535,6 +1672,10 @@
                 cert3_desc: "Curso de Excel con una duración de 34 horas.",
                 cert4_title: "Redacción y Ortografía",
                 cert4_desc: "Curso de redacción y ortografía con una duración de 30 horas.",
+                cert5_title: "Fundamentos de Python",
+                cert5_desc: "Curso de Python con 16 horas de teoría y práctica.",
+                cert6_title: "Programación Básica",
+                cert6_desc: "Curso introductorio a la programación.",
                 testimonials_title: "Testimonios",
                 testimonials_sub: "Personas que han confiado en mí",
                 testimonial1_text: '"He tenido la oportunidad de trabajar con Wilmar y puedo afirmar que es un profesional muy responsable y proactivo. Siempre cumple con los plazos, busca soluciones creativas a los problemas y mantiene una actitud positiva frente a los retos."',
@@ -1616,6 +1757,12 @@
                 proj6_desc: "Bingo game implemented in Python.",
                 proj7_title: "Custom Car",
                 proj7_desc: "Car simulation in Java.",
+                proj8_title: "Bootstrap Boxes",
+                proj8_desc: "Responsive box design using Bootstrap's grid system and utilities.",
+                proj9_title: "Spa",
+                proj9_desc: "Single Page Application (SPA) with dynamic routing.",
+                proj10_title: "React Exercises",
+                proj10_desc: "Collection of practical exercises to learn React.",
                 btn_repo: "View repository",
                 btn_more_projects: "See more projects",
                 cert_title: "Certificates",
@@ -1628,6 +1775,10 @@
                 cert3_desc: "Excel course with a duration of 34 hours.",
                 cert4_title: "Writing and Spelling",
                 cert4_desc: "Writing and spelling course with a duration of 30 hours.",
+                cert5_title: "Python Fundamentals",
+                cert5_desc: "Python course with 16 hours of theory and practice.",
+                cert6_title: "Basic Programming",
+                cert6_desc: "Introductory programming course.",
                 testimonials_title: "Testimonials",
                 testimonials_sub: "People who have trusted me",
                 testimonial1_text: '"I have had the opportunity to work with Wilmar and I can say that he is a very responsible and proactive professional. He always meets deadlines, finds creative solutions to problems, and maintains a positive attitude towards challenges."',
@@ -1709,6 +1860,12 @@
                 proj6_desc: "Jogo de bingo implementado em Python.",
                 proj7_title: "Carro personalizado",
                 proj7_desc: "Simulação de carro em Java.",
+                proj8_title: "Caixas em Bootstrap",
+                proj8_desc: "Design de caixas responsivas usando o sistema de grade e utilitários do Bootstrap.",
+                proj9_title: "Spa",
+                proj9_desc: "Aplicação de página única (SPA) com roteamento dinâmico.",
+                proj10_title: "Exercícios React",
+                proj10_desc: "Coleção de exercícios práticos para aprender React.",
                 btn_repo: "Ver repositório",
                 btn_more_projects: "Ver mais projetos",
                 cert_title: "Certificados",
@@ -1721,6 +1878,10 @@
                 cert3_desc: "Curso de Excel com duração de 34 horas.",
                 cert4_title: "Redação e Ortografia",
                 cert4_desc: "Curso de redação e ortografia com duração de 30 horas.",
+                cert5_title: "Fundamentos de Python",
+                cert5_desc: "Curso de Python com 16 horas de teoria e prática.",
+                cert6_title: "Programação Básica",
+                cert6_desc: "Curso introdutório de programação.",
                 testimonials_title: "Depoimentos",
                 testimonials_sub: "Pessoas que confiaram em mim",
                 testimonial1_text: '"Tive a oportunidade de trabalhar com Wilmar e posso afirmar que ele é um profissional muito responsável e proativo. Sempre cumpre os prazos, busca soluções criativas para os problemas e mantém uma atitude positiva diante dos desafios."',
